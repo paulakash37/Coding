@@ -1,0 +1,23 @@
+Node* kReverse(Node* head, int k) {
+  //Base call
+    if(head==NULL){
+        return NULL;
+    }
+    //step1:reverse first K Nodes
+    Node* next=NULL;
+    Node* curr=head;
+    Node* prev=NULL;
+    int cnt=0;
+    while(curr!=NULL && cnt < k){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        cnt ++;}
+       //step2: recursion dekh lega aab
+        if(next!=NULL){
+            head->next=kReverse(next,k);
+        }
+        //step3: return head of reverse list
+    return prev;
+}
