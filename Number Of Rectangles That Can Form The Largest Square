@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countGoodRectangles(vector<vector<int>>& rectangles)
+    {
+        int cnt=INT_MIN, maxLen=INT_MIN;
+        for(vector<int> rectangle : rectangles)
+        {
+            int side=min(rectangle[0],rectangle[1]);
+            if(side>maxLen)
+            {
+                cnt=1;
+                maxLen=side;
+            }
+            else if(side==maxLen)
+                cnt++;
+        }
+        return cnt;
+    }
+};
